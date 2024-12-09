@@ -1,11 +1,7 @@
 import sys
-import os
 import shutil
 import readchar
-import asyncio
-from dataclasses import dataclass
-from typing import Any, Callable, Dict, List, Optional, Set, Tuple, Union
-from utils.styling import S_BAR
+from typing import Any, Callable, Dict, List, Optional, Union
 
 # Constants
 CANCEL = object()  # Symbol equivalent
