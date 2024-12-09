@@ -1,5 +1,6 @@
-from prompt import text, password, select, multiselect, confirm, create_note, note, intro, outro, is_cancel
-from prompt import *
+from prompts import text, password, select, multiselect, confirm, create_note, note, intro, outro, Option, is_cancel
+from prompts import *
+import asyncio
 
 async def simulate_install():
     """Simulate installation process with updates."""

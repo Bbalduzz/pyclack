@@ -1,0 +1,16 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+.python-version
+.env
+.venv
+venv/
+ENV/
+
+# Distribution/packaging
+dist/
+build/
+*.egg-info/
