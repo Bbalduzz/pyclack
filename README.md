@@ -24,6 +24,14 @@
 
 `/prompts`: Need something ready to use? This package offers a collection of beautifully designed prompts with an intuitive API. Just import and start using them - perfect when you want professional results without the custom styling work.
 
+#### Installation
+```cmd
+pip install pyclack           # Base installation
+pip install pyclack[core]     # Core features
+pip install pyclack[prompts]  # Prompts features
+pip install pyclack[all]      # Everything
+```
+
 ## Core Prompt Base Class: `/core`
 
 Low-level components for building custom CLI interfaces.
