@@ -26,10 +26,10 @@
 
 #### Installation
 ```cmd
-pip install pyclack           # Base installation
-pip install pyclack[core]     # Core features
-pip install pyclack[prompts]  # Prompts features
-pip install pyclack[all]      # Everything
+pip install pyclack-cli           # Base installation
+pip install pyclack-cli[core]     # Core features
+pip install pyclack-cli[prompts]  # Prompts features
+pip install pyclack-cli[all]      # Everything
 ```
 
 ## Core Prompt Base Class: `/core`
