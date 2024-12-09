@@ -5,7 +5,7 @@ core_requirements = base_requirements.copy()
 prompts_requirements = base_requirements.copy()
 
 setup(
-    name="pyclack",
+    name="pyclack-cli",
     version="0.1.0",
     packages=find_packages(),
     python_requires=">=3.7",
