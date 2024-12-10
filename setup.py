@@ -6,13 +6,13 @@ prompts_requirements = base_requirements.copy()
 
 setup(
     name="pyclack-cli",
-    version="0.2.0",
-    packages=find_packages(),
+    version="0.3.0",
+    package_dir={"": "src"},
+    packages=find_packages(where="src"),
     python_requires=">=3.7",
     
-    # core dependencies
+    # dependencies
     install_requires=base_requirements,
-    # optional dependencies
     extras_require={
         "core": core_requirements,
         "prompts": prompts_requirements,
