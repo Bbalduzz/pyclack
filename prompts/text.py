@@ -25,9 +25,9 @@ async def text(
             return (f"{Color.gray(S_BAR)}\n"
                    f"{symbol(prompt.state)}  {message}\n")
         elif prompt.state == 'cancel':
-            return (f"{title}{Color.gray(S_BAR)}  "
-                   f"{Color.strikethrough(Color.dim(prompt.value or ''))}"
-                   f"{prompt.value and prompt.value.strip() and f'\n{Color.gray(S_BAR)}' or ''}")
+            return (f"{title.rstrip()}\n"
+                   f"{Color.red(S_BAR)}  {Color.dim(prompt.value) if prompt.value else placeholder_text}\n"
+                   f"{Color.red(S_BAR_END)}  {Color.red('Operation cancelled')}\n")
         else:
             return f"{title}{Color.cyan(S_BAR)}  {value}\n{Color.cyan(S_BAR_END)}\n"
 

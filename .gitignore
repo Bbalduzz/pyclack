@@ -16,3 +16,4 @@ build/
 *.egg-info/
 
 docs.py
+directory_docs.md

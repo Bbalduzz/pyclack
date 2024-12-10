@@ -26,9 +26,15 @@ async def select(
         if prompt.state == 'submit':
             return f"{title}"
         elif prompt.state == 'cancel':
-            return (f"{title}{Color.gray(S_BAR)}  "
-                   f"{opt(prompt.options[prompt.cursor], 'cancelled')}\n"
-                   f"{Color.gray(S_BAR)}")
+            styled_options = limit_options(
+                options=prompt.options,
+                cursor=prompt.cursor,
+                max_items=max_items,
+                style=lambda item, active: opt(item, 'cancelled')
+            )
+            return (f"{title}{Color.red(S_BAR)}  "
+                f"{f'\n{Color.red(S_BAR)}  '.join(styled_options)}\n"
+                f"{Color.red(S_BAR_END)}  {Color.red('Operation cancelled')}\n")
         else:
             styled_options = limit_options(
                 options=prompt.options,
@@ -37,8 +43,8 @@ async def select(
                 style=lambda item, active: opt(item, 'active' if active else 'inactive')
             )
             return (f"{title}{Color.cyan(S_BAR)}  "
-                   f"{f'\n{Color.cyan(S_BAR)}  '.join(styled_options)}\n"
-                   f"{Color.cyan(S_BAR_END)}\n")
+                f"{f'\n{Color.cyan(S_BAR)}  '.join(styled_options)}\n"
+                f"{Color.cyan(S_BAR_END)}\n")
 
     prompt = SelectPrompt(
         render=render,

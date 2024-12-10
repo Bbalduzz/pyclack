@@ -19,9 +19,9 @@ async def password(
         elif prompt.state == 'submit':
             return f"{title}"
         elif prompt.state == 'cancel':
-            return (f"{title}{Color.gray(S_BAR)}  "
-                   f"{Color.strikethrough(Color.dim(masked or ''))}"
-                   f"{masked and f'\n{Color.gray(S_BAR)}' or ''}")
+            return (f"{title.rstrip()}\n"
+                   f"{Color.red(S_BAR)}  {masked}\n"
+                   f"{Color.red(S_BAR_END)}  {Color.red('Operation cancelled')}\n")
         else:
             return f"{title}{Color.cyan(S_BAR)}  {value}\n{Color.cyan(S_BAR_END)}\n"
 

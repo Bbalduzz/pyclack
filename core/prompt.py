@@ -202,10 +202,14 @@ class Prompt:
             self.render()
             
             while True:
-                key = readchar.readkey()
-                if not self.handle_key(key):
+                try:
+                    key = readchar.readkey()
+                    if not self.handle_key(key):
+                        break
+                    self.render()
+                except KeyboardInterrupt:
+                    self.state = 'cancel'
                     break
-                self.render()
             
             # Handle final state
             self._restore_cursor_position()

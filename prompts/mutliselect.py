@@ -16,14 +16,14 @@ async def multiselect(
             label = option.label or str(option.value)
             if state == 'active':
                 return (f"{Color.cyan(S_CHECKBOX_ACTIVE)} {label} "
-                       f"{option.hint and Color.dim(f'({option.hint})') or ''}")
+                    f"{option.hint and Color.dim(f'({option.hint})') or ''}")
             elif state == 'selected':
                 return f"{Color.green(S_CHECKBOX_SELECTED)} {Color.dim(label)}"
             elif state == 'cancelled':
                 return Color.strikethrough(Color.dim(label))
             elif state == 'active-selected':
                 return (f"{Color.green(S_CHECKBOX_SELECTED)} {label} "
-                       f"{option.hint and Color.dim(f'({option.hint})') or ''}")
+                    f"{option.hint and Color.dim(f'({option.hint})') or ''}")
             elif state == 'submitted':
                 return Color.dim(label)
             return f"{Color.dim(S_CHECKBOX_INACTIVE)} {Color.dim(label)}"
@@ -34,13 +34,21 @@ async def multiselect(
             selected = [opt for opt in prompt.options if opt.value in prompt.value]
             selected_labels = [opt.label for opt in selected]
             return (f"{Color.gray(S_BAR)}\n"
-                   f"{symbol(prompt.state)}  {message}\n")
+                f"{symbol(prompt.state)}  {message}\n")
 
         if prompt.state == 'cancel':
-            selected = [opt for opt in prompt.options if opt.value in prompt.value]
-            selected_str = Color.dim(', ').join(opt(o, 'cancelled') for o in selected)
-            return (f"{title}{Color.gray(S_BAR)}  "
-                   f"{selected_str}\n{Color.gray(S_BAR) if selected_str else ''}")
+            styled_options = limit_options(
+                options=prompt.options,
+                cursor=prompt.cursor,
+                max_items=max_items,
+                style=lambda item, active: opt(
+                    item,
+                    'cancelled' if item.value in prompt.value else 'inactive'
+                )
+            )
+            return (f"{title}{Color.red(S_BAR)}  "
+                f"{f'\n{Color.red(S_BAR)}  '.join(styled_options)}\n"
+                f"{Color.red(S_BAR_END)}  {Color.red('Operation cancelled')}\n")
         elif prompt.state == 'error':
             footer = prompt.error.split('\n')
             footer = [
@@ -60,8 +68,8 @@ async def multiselect(
                 )
             )
             return (f"{title}{Color.yellow(S_BAR)}  "
-                   f"{f'\n{Color.yellow(S_BAR)}  '.join(styled_options)}\n"
-                   f"{'\n'.join(footer)}\n")
+                f"{f'\n{Color.yellow(S_BAR)}  '.join(styled_options)}\n"
+                f"{'\n'.join(footer)}\n")
         else:
             styled_options = limit_options(
                 options=prompt.options,
@@ -76,8 +84,8 @@ async def multiselect(
                 )
             )
             return (f"{title}{Color.cyan(S_BAR)}  "
-                   f"{f'\n{Color.cyan(S_BAR)}  '.join(styled_options)}\n"
-                   f"{Color.cyan(S_BAR_END)}\n")
+                f"{f'\n{Color.cyan(S_BAR)}  '.join(styled_options)}\n"
+                f"{Color.cyan(S_BAR_END)}\n")
 
     prompt = MultiSelectPrompt(
         render=render,
