@@ -1,7 +1,7 @@
 <h1 align="center">
-  pyclack
+  <img width="50%" align="center" src="https://github.com/user-attachments/assets/d47cc941-e7bb-4189-b9e8-706be3b41845" alt="logo">
   <br>
-  <img align="center" src="https://img.shields.io/badge/python-blue" alt="logo">
+  <img align="center" src="https://img.shields.io/badge/python-blue" alt="language">
   <img align="center" src="https://img.shields.io/pypi/v/pyclack-cli?style=flat&color=blue" alt="PyPI - Version">
   <img align="center" src="https://img.shields.io/pypi/dm/pyclack-cli?style=flat&color=blue" alt="PyPI - Downloads">
 </h1>
