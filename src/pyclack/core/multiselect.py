@@ -1,5 +1,5 @@
-from core.prompt import *
-from core.select import Option
+from .prompt import *
+from .select import Option
 from typing import Any, Generic, TypeVar, List, Optional
 
 T = TypeVar('T')

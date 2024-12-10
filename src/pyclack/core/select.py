@@ -1,4 +1,4 @@
-from core.prompt import *
+from .prompt import *
 from dataclasses import dataclass
 from typing import Any, Generic, TypeVar, List, Optional, Callable, TypeVar
 

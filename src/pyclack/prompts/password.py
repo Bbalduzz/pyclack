@@ -1,6 +1,6 @@
 from typing import Callable, Optional, Union
-from core import PasswordPrompt, is_cancel
-from utils.styling import Color, symbol, S_BAR, S_BAR_END, S_PASSWORD_MASK
+from src.pyclack.core import PasswordPrompt, is_cancel
+from src.pyclack.utils.styling import Color, symbol, S_BAR, S_BAR_END, S_PASSWORD_MASK
 
 async def password(
     message: str,

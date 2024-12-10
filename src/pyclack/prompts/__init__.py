@@ -4,8 +4,8 @@ from .select import select
 from .mutliselect import multiselect
 from .confirm import confirm
 from .spinner import spinner, with_spinner
-from core import Option, is_cancel
-from utils.styling import Color, strip_ansi, S_BAR, S_STEP_SUBMIT, S_CORNER_TOP_RIGHT, S_BAR_H, S_CONNECT_LEFT, S_CORNER_BOTTOM_RIGHT, S_BAR_START, S_BAR_END
+from src.pyclack.core import Option, is_cancel
+from src.pyclack.utils.styling import Color, strip_ansi, S_BAR, S_STEP_SUBMIT, S_CORNER_TOP_RIGHT, S_BAR_H, S_CONNECT_LEFT, S_CORNER_BOTTOM_RIGHT, S_BAR_START, S_BAR_END
 
 def create_note(message: str = '', title: str = '') -> str:
     lines = f"\n{message}\n".split('\n')

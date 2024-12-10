@@ -1,5 +1,5 @@
-from core.prompt import *
-from utils.styling import Color
+from .prompt import *
+from src.pyclack.utils.styling import Color
 from typing import Optional, Callable, Any, Union
 
 class TextPrompt(Prompt):

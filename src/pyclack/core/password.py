@@ -1,4 +1,4 @@
-from core.prompt import *
+from .prompt import *
 from typing import Optional, Callable, Any, Union
 
 class PasswordPrompt(Prompt):

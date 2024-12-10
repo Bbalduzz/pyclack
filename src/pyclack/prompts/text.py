@@ -1,6 +1,6 @@
 from typing import Callable, Optional, Union, Any
-from core import TextPrompt, is_cancel
-from utils.styling import Color, symbol, S_BAR, S_BAR_END
+from src.pyclack.core import TextPrompt, is_cancel
+from src.pyclack.utils.styling import Color, symbol, S_BAR, S_BAR_END
 
 async def text(
     message: str,
