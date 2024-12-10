@@ -1,6 +1,6 @@
 from typing import List, Any, Optional, Union, Any
-from src.pyclack.core import MultiSelectPrompt, Option, is_cancel
-from src.pyclack.utils.styling import Color, symbol, limit_options, S_BAR, S_BAR_END, S_CHECKBOX_ACTIVE, S_CHECKBOX_SELECTED, S_CHECKBOX_INACTIVE
+from pyclack.core import MultiSelectPrompt, Option, is_cancel
+from pyclack.utils.styling import Color, symbol, limit_options, S_BAR, S_BAR_END, S_CHECKBOX_ACTIVE, S_CHECKBOX_SELECTED, S_CHECKBOX_INACTIVE
 
 async def multiselect(
     message: str,

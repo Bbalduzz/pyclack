@@ -1,6 +1,6 @@
 from typing import List, Any, Optional, Union, Any
-from src.pyclack.core import SelectPrompt, Option, is_cancel
-from src.pyclack.utils.styling import Color, symbol, limit_options, S_BAR, S_BAR_END, S_RADIO_ACTIVE, S_RADIO_INACTIVE
+from pyclack.core import SelectPrompt, Option, is_cancel
+from pyclack.utils.styling import Color, symbol, limit_options, S_BAR, S_BAR_END, S_RADIO_ACTIVE, S_RADIO_INACTIVE
 
 async def select(
     message: str,

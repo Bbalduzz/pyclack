@@ -1,7 +1,7 @@
 import sys
 import threading
 import time
-from src.pyclack.utils.styling import Color, S_BAR, S_STEP_SUBMIT, S_STEP_CANCEL, S_STEP_ERROR, UNICODE
+from pyclack.utils.styling import Color, S_BAR, S_STEP_SUBMIT, S_STEP_CANCEL, S_STEP_ERROR, UNICODE
 
 class Spinner:
     """Terminal spinner for loading states."""

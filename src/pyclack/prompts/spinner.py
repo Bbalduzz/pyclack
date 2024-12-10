@@ -1,7 +1,7 @@
 from contextlib import asynccontextmanager
 from functools import wraps
-from src.pyclack.core import Spinner
-from src.pyclack.utils.styling import Color
+from pyclack.core import Spinner
+from pyclack.utils.styling import Color
 
 @asynccontextmanager
 async def spinner(message: str = '', options=None):

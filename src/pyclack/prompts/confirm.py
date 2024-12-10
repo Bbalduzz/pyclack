@@ -1,6 +1,6 @@
 from typing import Union, Any
-from src.pyclack.core import ConfirmPrompt, is_cancel
-from src.pyclack.utils.styling import (
+from pyclack.core import ConfirmPrompt, is_cancel
+from pyclack.utils.styling import (
     Color, symbol, S_BAR, S_BAR_END, S_RADIO_ACTIVE, S_RADIO_INACTIVE
 )
 

@@ -1,5 +1,9 @@
-from src.pyclack.prompts import text, password, select, multiselect, confirm, create_note, note, intro, outro, Option, is_cancel
-from src.pyclack.prompts import *
+'''
+demo file
+'''
+
+from pyclack.prompts import text, password, select, multiselect, confirm, create_note, note, intro, outro, Option, is_cancel
+from pyclack.prompts import *
 import asyncio
 
 async def simulate_install():
