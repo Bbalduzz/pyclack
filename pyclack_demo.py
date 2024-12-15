@@ -1,15 +1,30 @@
-'''
+"""
 demo file
-'''
+"""
 
-from pyclack.prompts import text, password, select, multiselect, confirm, create_note, note, intro, outro, Option, is_cancel
+from pyclack.prompts import (
+    text,
+    multiline_text,
+    password,
+    select,
+    multiselect,
+    confirm,
+    create_note,
+    note,
+    intro,
+    outro,
+    Option,
+    is_cancel,
+)
 from pyclack.prompts import *
 import asyncio
+
 
 async def simulate_install():
     """Simulate installation process with updates."""
     await asyncio.sleep(1)
     return "Installation complete!"
+
 
 @with_spinner("Installing dependencies...")
 async def install_deps():
@@ -17,57 +32,62 @@ async def install_deps():
     await asyncio.sleep(2)
     return "Dependencies installed!"
 
+
 async def main():
     # Intro
     intro("pyclack")
-    
+
     # Project location
     project_path = await text(
         message="Where should we create your project?",
         placeholder=".",
-        initial_value="."
+        initial_value=".",
     )
     if is_cancel(project_path):
         return
-    
+
+    textarea = await multiline_text(
+        message="Enter your multiline text (Ctrl + J for new line):",
+        placeholder="Start typing...",
+    )
+    if is_cancel(textarea):
+        return
+
     pwd = await password(
-        message = "Enter your secret",
-        validate=lambda x: "password is too short" if len(x) < 5 else None
+        message="Enter your secret",
+        validate=lambda x: "password is too short" if len(x) < 5 else None,
     )
     if is_cancel(pwd):
         return
-    
+
     # Project type
     project_type = await select(
         message=f'Pick a project type within "{project_path}"',
         options=[
             Option("typescript", "TypeScript"),
-            Option("javascript", "JavaScript")
+            Option("javascript", "JavaScript"),
         ],
-        initial_value="typescript"
+        initial_value="typescript",
     )
     if is_cancel(project_type):
         return
-    
+
     # Tools selection
     tools = await multiselect(
         message="Select additional tools.",
         options=[
             Option("prettier", "Prettier"),
             Option("eslint", "ESLint"),
-            Option("jest", "Jest")
+            Option("jest", "Jest"),
         ],
-        initial_values=["prettier", "eslint"]
+        initial_values=["prettier", "eslint"],
     )
     if is_cancel(tools):
         return
-    
+
     # Install dependencies
     install = await confirm(
-        message="Install dependencies?",
-        active="Yes",
-        inactive="No",
-        initial_value=True
+        message="Install dependencies?", active="Yes", inactive="No", initial_value=True
     )
     if is_cancel(install):
         return
@@ -84,15 +104,15 @@ async def main():
 
         # Method 2: Using decorated function
         # await install_deps()
-    
+
     # Next steps
-    steps = [
-        "cd .",
-        "pnpm dev"
-    ]
-    
+    steps = ["cd .", "pnpm dev"]
+
     note(title="Next steps.", next_steps=steps)
-    outro(f"{Color.dim(f'Problems? {link(url='https://github.com/Bbalduzz/pyclack')}')}")
+    outro(
+        f"{Color.dim(f'Problems? {link(url='https://github.com/Bbalduzz/pyclack')}')}"
+    )
+
 
 if __name__ == "__main__":
     asyncio.run(main())

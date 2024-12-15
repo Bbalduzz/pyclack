@@ -1,5 +1,5 @@
 from .password import PasswordPrompt
-from .text import TextPrompt
+from .text import TextPrompt, MultilineTextPrompt
 from .confirm import ConfirmPrompt
 from .select import SelectPrompt
 from .multiselect import MultiSelectPrompt, Option
@@ -9,8 +9,10 @@ from .spinner import Spinner
 
 from typing import Any
 from dataclasses import dataclass
+
+
 @dataclass
 class Option:
     value: Any
-    label: str = ''
-    hint: str = ''
+    label: str = ""
+    hint: str = ""
