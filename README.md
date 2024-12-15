@@ -3,7 +3,7 @@
   <br>
   <img align="center" src="https://img.shields.io/badge/python-blue" alt="language">
   <img align="center" src="https://img.shields.io/pypi/v/pyclack-cli?style=flat&color=blue" alt="PyPI - Version">
-  <img align="center" src="https://img.shields.io/pypi/dm/pyclack-cli?style=flat&color=blue" alt="PyPI - Downloads">
+  <img align="center" src="https://static.pepy.tech/badge/pyclack-cli" alt="PyPI - Downloads">
 </h1>
 
 
