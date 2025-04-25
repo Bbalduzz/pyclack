@@ -39,10 +39,10 @@ def create_note(message: str = "", title: str = "") -> str:
     )
 
 
-def note(message: str = None, title: str = "", next_steps: list = []) -> str:
+def note(message: str = None, title: str = "", content: list = []) -> str:
     print(
         create_note(
-            message=message if message else "\n".join(next_steps),
+            message=message if message else "\n".join(content),
             title=title if title else "Next steps.",
         )
     )

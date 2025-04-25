@@ -1,21 +1,7 @@
 """
 demo file
 """
-
-from pyclack.prompts import (
-    text,
-    multiline_text,
-    password,
-    select,
-    multiselect,
-    confirm,
-    create_note,
-    note,
-    intro,
-    outro,
-    Option,
-    is_cancel,
-)
+from pyclack.core import group, PromptGroupOptions
 from pyclack.prompts import *
 import asyncio
 
@@ -108,11 +94,40 @@ async def main():
     # Next steps
     steps = ["cd .", "pnpm dev"]
 
-    note(title="Next steps.", next_steps=steps)
+    note(title="Next steps.", content=steps)
     outro(
         f"{Color.dim(f'Problems? {link(url='https://github.com/Bbalduzz/pyclack')}')}"
     )
 
+async def group_main():
+    intro("pyclack")
+
+    user_info = await group({
+        "project_path": lambda _: text(
+            message="Where should we create your project?",
+            placeholder=".",
+            initial_value=".",
+        ),
+        "textarea": lambda _: multiline_text(
+            message="Enter your multiline text (Ctrl + J for new line):",
+            placeholder="Start typing...",
+        ),
+        "password": lambda _: password(
+            message="Enter your secret",
+            validate=lambda x: "password is too short" if len(x) < 5 else None,
+        )
+    }, PromptGroupOptions(
+        on_cancel=lambda results: print(f"Canceled with partial results: {results}")
+    ))
+
+    note(title="Group results:", content=[f"user_info: {user_info}"])
+    outro("Bye!")
+    if any(is_cancel(value) for value in user_info.values()):
+        return
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    import sys
+    if sys.argv[1] == "group":
+        asyncio.run(group_main())
+    elif sys.argv[1] == "main":
+        asyncio.run(main())
