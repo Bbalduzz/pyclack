@@ -2,16 +2,15 @@ import sys
 import shutil
 import readchar
 from typing import Any, Callable, Dict, List, Optional, Union
+from pyclack.utils.terminal import TERMINAL_TYPE
 
 # Constants
-CANCEL = object()  # Symbol equivalent
+CANCEL = object()
 KEYS = {"up", "down", "left", "right", "space", "enter"}
 ALIASES = {"k": "up", "j": "down", "h": "left", "l": "right"}
 
-
 def is_cancel(value: Any) -> bool:
     return value is CANCEL
-
 
 class Color:
     """Simple color handling class to mimic picocolors functionality."""
@@ -75,11 +74,17 @@ class Prompt:
 
     def _save_cursor_position(self):
         """Save current cursor position."""
-        sys.stdout.write("\033[s")
+        if TERMINAL_TYPE == "xterm":
+            sys.stdout.write("\0337")
+        else:
+            sys.stdout.write("\033[s")
 
     def _restore_cursor_position(self):
         """Restore saved cursor position."""
-        sys.stdout.write("\033[u")
+        if TERMINAL_TYPE == "xterm":
+            sys.stdout.write("\0338")
+        else:
+            sys.stdout.write("\033[u")
 
     def _move_to_start(self):
         """Move cursor to start of prompt area."""
